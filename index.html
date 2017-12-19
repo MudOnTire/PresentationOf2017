@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        body {
+            background-color: skyblue;
+        }
+
+        .step {
+            width: 1376px;
+            height: 768px;
+            text-align: center;
+            opacity: 0.2;
+            -webkit-transition: opacity 1s;
+            -moz-transition: opacity 1s;
+            -ms-transition: opacity 1s;
+            -o-transition: opacity 1s;
+            transition: opacity 1s;
+            font-size: 60px;
+            position: relative;
+        }
+
+        .active.step {
+            opacity: 1;
+        }
+
+        .slide,
+        .rotation {
+            display: block;
+            background-color: #fff;
+            border: 1px solid rgba(0, 0, 0, 0.3);
+            border-radius: 10px;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+            color: rgb(102, 102, 102);
+            text-shadow: 0 2px 2px rgba(0, 0, 0, 0.1);
+            font-family: 'Open Sans', Arial, Sans-serif;
+            font-size: 30px;
+            line-height: 36px;
+            letter-spacing: -1px;
+        }
+
+        .gameStep-title {
+            font-size: 80px;
+            font-weight: bold;
+            font-family: sans-serif;
+            position: absolute;
+            top: 200px;
+            text-align: left;
+            padding-left: 60px;
+            color: rgba(226, 53, 23, 0.8);
+        }
+
+        .gameStep-img {
+            height: 300px;
+            position: absolute;
+            right: 80px;
+            bottom: 100px;
+            border-radius: 100px;
+        }
+
+        .present .gameStep-img {
+            transition-delay: 0.2s;
+            transition: all 1s;
+            transform: rotateZ(1100deg);
+        }
+
+        .present .gameStep-title b {
+            display: inline-block;
+            transition-delay: 0.2s;
+            transition: all 1s;
+            transform: rotateZ(1080deg);
+            color: greenyellow;
+        }
+
+        #gameDemo iframe {
+            width: 100%;
+            height: 100%;
+        }
+
+        .paintStep-title {
+            position: absolute;
+            width: 100%;
+            left: -1500px;
+            font-size: 80px;
+            top: 275px;
+            text-align: left;
+            color: brown;
+        }
+
+        .present .paintStep-title {
+            transition-delay: 0.2s;
+            transition: all 1s;
+            transform: translateX(1550px);
+        }
+
+        .paintStep-img {
+            width: 150px;
+            position: absolute;
+            top: -1000px;
+            right: 200px;
+        }
+
+        @keyframes bounce {
+            0%,
+            20%,
+            40%,
+            60%,
+            80%,
+            100% {
+                transform: rotateZ(0);
+            }
+
+            10% {
+                transform: rotateZ(-15deg);
+            }
+
+            30% {
+                transform: rotateZ(14deg);
+            }
+
+            50% {
+                transform: rotateZ(-12deg);
+            }
+
+            70% {
+                transform: rotateZ(9deg);
+            }
+
+            90% {
+                transform: rotateZ(-5deg);
+            }
+        }
+
+        .present .paintStep-img {
+            transition: top 0.5s linear 0.8s;
+            top: 275px;
+            animation: 0.5s ease-in-out 1.3s bounce;
+        }
+
+        .paintStep-qm {
+            color: red;
+            position: absolute;
+            right: 20px;
+            top: 75px;
+            opacity: 0;
+        }
+
+        .present .paintStep-qm {
+            transition: all 1s linear 2s;
+            font-size: 300px;
+            opacity: 1;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="impress">
+        <div id="step1" class="step" data-x="0" data-y="0" data-scale="3">
+            What can we do with programming skills?
+        </div>
+        <!-- game -->
+        <div id="gameStep" class="step rotation" data-x="0" data-y="0" data-z="0" data-rotate-y="90" data-rotate-x="0" data-rotate-order="xyz">
+            <p class="gameStep-title">
+                Create
+                <b>Games</b> for
+                <b>Fun</b>?
+            </p>
+            <img src="img/game.gif" alt="more games" class="gameStep-img">
+        </div>
+        <div id="gameDemo" class="step rotation" data-x="0" data-y="800" data-z="0" data-rotate-y="130" data-rotate-x="0" data-rotate-order="xyz">
+            <iframe src="refs/2048-game/index.html" frameborder="0"></iframe>
+        </div>
+
+
+        <!-- paint -->
+        <div id="paintStep" class="step rotation" data-x="0" data-y="1600" data-z="0" data-rotate-y="170" data-rotate-x="0" data-rotate-order="xyz">
+            <p class="paintStep-title">Draw your own
+                <b>Mona Lisa</b>
+            </p>
+            <img src="img/mona-lisa-lego.jpg" alt="mona lisa" class="paintStep-img">
+            <p class="paintStep-qm">?</p>
+        </div>
+
+
+
+
+
+
+
+        <div class="step rotation" data-x="0" data-y="2400" data-z="0" data-rotate-y="210" data-rotate-x="0" data-rotate-order="xyz">
+            4
+        </div>
+        <div class="step rotation" data-x="0" data-y="3200" data-z="0" data-rotate-y="250" data-rotate-x="0" data-rotate-order="xyz">
+            5
+        </div>
+        <div class="step rotation" data-x="0" data-y="4000" data-z="0" data-rotate-y="290" data-rotate-x="0" data-rotate-order="xyz">
+            6
+        </div>
+        <div class="step rotation" data-x="0" data-y="4800" data-z="0" data-rotate-y="330" data-rotate-x="0" data-rotate-order="xyz">
+            7
+        </div>
+        <div class="step rotation" data-x="0" data-y="5600" data-z="0" data-rotate-y="370" data-rotate-x="0" data-rotate-order="xyz">
+            8
+        </div>
+        <div class="step rotation" data-x="0" data-y="6400" data-z="0" data-rotate-y="410" data-rotate-x="0" data-rotate-order="xyz">
+            9
+        </div>
+        <div class="step rotation" data-x="0" data-y="7200" data-z="0" data-rotate-y="450" data-rotate-x="0" data-rotate-order="xyz">
+            10
+        </div>
+    </div>
+
+    <script src="js/impress.js"></script>
+    <script>
+        impress().init();
+    </script>
+</body>
+
+</html>

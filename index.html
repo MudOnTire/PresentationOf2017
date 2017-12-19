@@ -13,7 +13,7 @@
         }
 
         body {
-            background-color: skyblue;
+            background-color: #000;
         }
 
         iframe {
@@ -41,7 +41,7 @@
 
         .rotation {
             display: block;
-            background-color: rgba(255, 255, 220, 0.9);
+            background-color: rgb(255, 255, 220);
             border: 1px solid rgba(0, 0, 0, 0.3);
             border-radius: 10px;
             box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
@@ -58,7 +58,7 @@
             top: 50%;
             transform: translateY(-50%);
             color: rgba(0, 0, 0, 0.9);
-            font-size: 50px;
+            font-size: 80px;
         }
 
         .gameStep-title {
@@ -106,7 +106,7 @@
         }
 
         .present .paintStep-title {
-            transition: all 1s ease-in-out 0.2s;
+            transition: all 1s ease-in-out 0s;
             left: 50px;
             opacity: 1;
         }
@@ -170,7 +170,22 @@
             font-size: 300px;
             opacity: 1;
         }
+
+        .paintShow-iframe {
+            position: relative;
+            top: 160px;
+        }
+
+        .animation-title {
+            position: relative;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 60px;
+            z-index: 20;
+            color: rgba(100, 100, 100, 0.8);
+        }
     </style>
+    <link rel="stylesheet" href="css/wave.css">
 </head>
 
 <body>
@@ -178,7 +193,7 @@
 
 
         <!-- home -->
-        <div id="home" class="step" data-x="0" data-y="-1600" data-scale="10">
+        <div id="home" class="step" data-x="0" data-y="-1600" data-scale="3">
             <p class="home-title">
                 What can we do with programming skills?
             </p>
@@ -208,21 +223,28 @@
             <p class="paintStep-qm">?</p>
         </div>
         <div id="paintShow" class="step rotation" data-x="0" data-y="2400" data-z="0" data-rotate-y="210" data-rotate-x="0" data-rotate-order="xyz">
-            <iframe src="refs/mona-lisa/index.html" frameborder="0"></iframe>
+            <iframe src="refs/mona-lisa/index.html" frameborder="0" class="paintShow-iframe"></iframe>
         </div>
 
 
-
-
-
-
-
-        <div class="step rotation" data-x="0" data-y="3200" data-z="0" data-rotate-y="250" data-rotate-x="0" data-rotate-order="xyz">
-            5
+        <!-- animation -->
+        <div id="animationStep1" class="step rotation" data-x="0" data-y="3200" data-z="0" data-rotate-y="250" data-rotate-x="0"
+            data-rotate-order="xyz">
+            <div class="wave-box">
+                <div class="wave wave-one"></div>
+                <div class="wave wave-two"></div>
+                <div class="wave wave-three"></div>
+            </div>
+            <p class="animation-title">
+                Or Even Make A Movie?
+            </p>
         </div>
+
+
         <div class="step rotation" data-x="0" data-y="4000" data-z="0" data-rotate-y="290" data-rotate-x="0" data-rotate-order="xyz">
             6
         </div>
+
         <div class="step rotation" data-x="0" data-y="4800" data-z="0" data-rotate-y="330" data-rotate-x="0" data-rotate-order="xyz">
             7
         </div>

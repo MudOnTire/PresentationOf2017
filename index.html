@@ -7,8 +7,17 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
     <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
         body {
             background-color: skyblue;
+        }
+
+        iframe {
+            width: 100%;
+            height: 100%;
         }
 
         .step {
@@ -29,10 +38,9 @@
             opacity: 1;
         }
 
-        .slide,
         .rotation {
             display: block;
-            background-color: #fff;
+            background-color: rgba(255, 255, 255, 0.8);
             border: 1px solid rgba(0, 0, 0, 0.3);
             border-radius: 10px;
             box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
@@ -42,6 +50,14 @@
             font-size: 30px;
             line-height: 36px;
             letter-spacing: -1px;
+        }
+
+        .home-title{
+            position: relative;
+            top: 50%;
+            transform: translateY(-50%);
+            color:grey;
+            font-size: 50px;
         }
 
         .gameStep-title {
@@ -77,32 +93,21 @@
             color: greenyellow;
         }
 
-        #gameDemo iframe {
-            width: 100%;
-            height: 100%;
-        }
-
         .paintStep-title {
             position: absolute;
             width: 100%;
             left: -1500px;
             font-size: 80px;
-            top: 275px;
+            top: 300px;
             text-align: left;
             color: brown;
+            opacity: 0;
         }
 
         .present .paintStep-title {
-            transition-delay: 0.2s;
-            transition: all 1s;
-            transform: translateX(1550px);
-        }
-
-        .paintStep-img {
-            width: 150px;
-            position: absolute;
-            top: -1000px;
-            right: 200px;
+            transition: all 1s ease-in-out 0.2s;
+            left: 50px;
+            opacity: 1;
         }
 
         @keyframes bounce {
@@ -136,9 +141,18 @@
             }
         }
 
+        .paintStep-img {
+            width: 150px;
+            position: absolute;
+            top: -1000px;
+            right: 200px;
+            opacity: 0;
+        }
+
         .present .paintStep-img {
-            transition: top 0.5s linear 0.8s;
-            top: 275px;
+            transition: all 0.5s linear 0.8s;
+            top: 220px;
+            opacity: 1;
             animation: 0.5s ease-in-out 1.3s bounce;
         }
 
@@ -146,7 +160,7 @@
             color: red;
             position: absolute;
             right: 20px;
-            top: 75px;
+            top: 300px;
             opacity: 0;
         }
 
@@ -160,9 +174,16 @@
 
 <body>
     <div id="impress">
-        <div id="step1" class="step" data-x="0" data-y="0" data-scale="3">
-            What can we do with programming skills?
+
+
+        <!-- home -->
+        <div id="home" class="step" data-x="0" data-y="-1600" data-scale="10">
+            <p class="home-title">
+                What can we do with programming skills?
+            </p>
         </div>
+
+
         <!-- game -->
         <div id="gameStep" class="step rotation" data-x="0" data-y="0" data-z="0" data-rotate-y="90" data-rotate-x="0" data-rotate-order="xyz">
             <p class="gameStep-title">
@@ -185,16 +206,16 @@
             <img src="img/mona-lisa-lego.jpg" alt="mona lisa" class="paintStep-img">
             <p class="paintStep-qm">?</p>
         </div>
-
-
-
-
-
-
-
-        <div class="step rotation" data-x="0" data-y="2400" data-z="0" data-rotate-y="210" data-rotate-x="0" data-rotate-order="xyz">
-            4
+        <div id="paintShow" class="step rotation" data-x="0" data-y="2400" data-z="0" data-rotate-y="210" data-rotate-x="0" data-rotate-order="xyz">
+            <iframe src="refs/mona-lisa/index.html" frameborder="0"></iframe>
         </div>
+
+
+
+
+
+
+
         <div class="step rotation" data-x="0" data-y="3200" data-z="0" data-rotate-y="250" data-rotate-x="0" data-rotate-order="xyz">
             5
         </div>

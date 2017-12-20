@@ -184,6 +184,9 @@
             z-index: 20;
             color: rgba(100, 100, 100, 0.8);
         }
+        #animationStep.active+#animationShow{
+            opacity: 0;
+        }
     </style>
     <link rel="stylesheet" href="css/wave.css">
 </head>
@@ -228,7 +231,7 @@
 
 
         <!-- animation -->
-        <div id="animationStep1" class="step rotation" data-x="0" data-y="3200" data-z="0" data-rotate-y="250" data-rotate-x="0"
+        <div id="animationStep" class="step rotation" data-x="0" data-y="3200" data-z="0" data-rotate-y="250" data-rotate-x="0"
             data-rotate-order="xyz">
             <div class="wave-box">
                 <div class="wave wave-one"></div>
@@ -239,11 +242,11 @@
                 Or Even Make A Movie?
             </p>
         </div>
-
-
-        <div class="step rotation" data-x="0" data-y="4000" data-z="0" data-rotate-y="290" data-rotate-x="0" data-rotate-order="xyz">
-            6
+        <div id="animationShow" class="step rotation" data-x="0" data-y="4000" data-z="0" data-rotate-y="290" data-rotate-x="0" data-rotate-order="xyz">
+            <iframe src="refs/matrix-code-rain/index.html" frameborder="0"></iframe>
         </div>
+
+
 
         <div class="step rotation" data-x="0" data-y="4800" data-z="0" data-rotate-y="330" data-rotate-x="0" data-rotate-order="xyz">
             7

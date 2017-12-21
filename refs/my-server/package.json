@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "main": "./src/server.js",
   "license": "MIT",
+  "scripts": {
+    "start": "node server.js"
+  },
   "dependencies": {
     "express": "^4.16.2",
     "express-handlebars": "^3.0.0",

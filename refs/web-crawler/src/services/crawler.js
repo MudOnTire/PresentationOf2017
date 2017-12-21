@@ -54,7 +54,6 @@ Crawler.prototype.getTaobaoIndexImgs = function (complete) {
         .then((srcs) => {
             complete(srcs);
         })
-
 }
 
 Crawler.prototype.getJDBikeImgs = function (complete) {

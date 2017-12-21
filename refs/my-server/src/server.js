@@ -19,15 +19,19 @@ app.set('view engine', '.hbs');
 //set views path
 app.set('views', path.join(__dirname, 'views'));
 
-//render home view
+//render crawler view
 app.get('/', (request, response) => {
     const crawler = new Crawler();
     crawler.getTaobaoIndexImgs(function (srcs) {
-        response.render('home', {
+        response.render('crawler', {
             srcs: srcs
         });
     });
 });
+
+
+
+
 
 app.listen(port, (err) => {
     if (err) {

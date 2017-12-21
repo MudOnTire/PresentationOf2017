@@ -13,7 +13,7 @@
         }
 
         body {
-            background-color: #000;
+            background-color:skyblue;
         }
 
         iframe {
@@ -184,7 +184,7 @@
             z-index: 20;
             color: rgba(100, 100, 100, 0.8);
         }
-        #animationStep.active+#animationShow{
+        .active+.step{
             opacity: 0;
         }
     </style>
@@ -247,12 +247,12 @@
         </div>
 
 
-
-        <div class="step rotation" data-x="0" data-y="4800" data-z="0" data-rotate-y="330" data-rotate-x="0" data-rotate-order="xyz">
-            7
+        <!-- crawler -->
+        <div id="crawlerStep" class="step rotation" data-x="0" data-y="4800" data-z="0" data-rotate-y="330" data-rotate-x="0" data-rotate-order="xyz">
+            Hava enough fun.. but anything serious?
         </div>
-        <div class="step rotation" data-x="0" data-y="5600" data-z="0" data-rotate-y="370" data-rotate-x="0" data-rotate-order="xyz">
-            8
+        <div id="crawlerShow" class="step rotation" data-x="0" data-y="5600" data-z="0" data-rotate-y="370" data-rotate-x="0" data-rotate-order="xyz">
+            <iframe src="http://192.168.4.175:3000" frameborder="0"></iframe>
         </div>
         <div class="step rotation" data-x="0" data-y="6400" data-z="0" data-rotate-y="410" data-rotate-x="0" data-rotate-order="xyz">
             9

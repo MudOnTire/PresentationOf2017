@@ -10,8 +10,8 @@ var historyList = document.querySelector('#historyList');
 //初始化历史存储
 initHistory();
 
-function parseInput(text) {
-    var poly = text.replace(/\^(\d)+/g, '<sup>$1</sup>');
+function parseInput() {
+    var poly = input.value.replace(/\^(\d)+/g, '<sup>$1</sup>');
     polynomial.innerHTML = poly + ' = 0';
 }
 
@@ -130,6 +130,7 @@ function hideHistory() {
 input.onkeyup = function (event) {
     if (event.which === 13) {
         solve();
+        hideHistory();
         return;
     }
     var text = this.value;
@@ -140,15 +141,17 @@ input.onkeyup = function (event) {
         return;
     }
     showHistory(text);
-    parseInput(text);
+    parseInput();
 }
 
-input.onfocusin = function () {
+input.onfocus = function () {
     showHistory();
 }
 
-input.onfocusout = function () {
-    hideHistory();
+input.onblur = function () {
+    setTimeout(function () {
+        hideHistory();
+    }, 100);
 }
 
 solveBtn.onclick = function () {
@@ -159,5 +162,6 @@ document.documentElement.onclick = function (event) {
     var className = event.target.className;
     if (className.indexOf("history-item") > -1) {
         input.value = event.target.innerHTML;
+        parseInput();
     }
 };

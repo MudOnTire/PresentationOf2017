@@ -18,18 +18,18 @@ function getCoefficients(text) {
     });
     var pairs = [];
     parts.forEach(function (part, index) {
-        var pattern1 = /^([+-]?\d+)x\^(\d)+$/;
-        var pattern2 = /^([+-]?\d+)x$/;
+        var pattern1 = /^([+-]?\d*)x\^(\d)+$/;
+        var pattern2 = /^([+-]?\d*)x$/;
         var pattern3 = /^([+-]?\d+)$/;
         let coefficient = null;
         let power = null;
         if (pattern1.test(part)) {
             let match = part.match(pattern1);
-            coefficient = match[1];
+            coefficient = match[1] === "" ? "1" : match[1];
             power = match[2];
         } else if (pattern2.test(part)) {
             let match = part.match(pattern2);
-            coefficient = match[1];
+            coefficient = match[1] === "" ? "1" : match[1];
             power = 1;
         } else if (pattern3.test(part)) {
             coefficient = part;
@@ -41,6 +41,7 @@ function getCoefficients(text) {
     });
     // console.log(pairs);
     var maxPower = getMaxOfArray(pairs.map((pair, index) => pair.p));
+    console.log('max power: ' + maxPower);
     var coefficients = [];
     for (let i = 0; i <= maxPower; i++) {
         (function (p) {
@@ -53,6 +54,7 @@ function getCoefficients(text) {
             }
         })(i);
     }
+    console.log(coefficients);
     return coefficients;
 }
 

@@ -1,10 +1,18 @@
 var styles = require('./index.css');
 var findRoots = require('durand-kerner');
 
+var input = document.querySelector("#input");
+var polynomial = document.querySelector('#polynomial');
+var solveBtn = document.querySelector("#solveBtn");
+var result = document.querySelector('#result');
+var historyList = document.querySelector('#historyList');
+
+//初始化历史存储
+initHistory();
+
 function parseInput(text) {
     var poly = text.replace(/\^(\d)+/g, '<sup>$1</sup>');
-    var p = document.querySelector('#polynomial');
-    p.innerHTML = poly;
+    polynomial.innerHTML = poly + ' = 0';
 }
 
 function getMaxOfArray(arr) {
@@ -58,15 +66,98 @@ function getCoefficients(text) {
     return coefficients;
 }
 
-var input = document.querySelector("#input");
-input.onkeyup = function () {
+function solve() {
+    var coefficients = getCoefficients(input.value);
+    var roots = findRoots(coefficients);
+    var rootsStr = '的解为：';
+    if (roots[0].length <= 0) return;
+    for (let i = 0; i < roots[0].length; i++) {
+        var imgRoot = roots[1][i];
+        if (imgRoot.toFixed(3) == 0) {
+            rootsStr += '<b>' + roots[0][i].toFixed(3) + '</b>';
+        } else {
+            rootsStr += '<b>' + roots[0][i].toFixed(3) + '+' + roots[1][i].toFixed(3) + 'i' + '</b>';
+        }
+    }
+    result.innerHTML = rootsStr;
+    addHistory(input.value);
+    console.log(roots);
+}
+
+// history
+function initHistory() {
+    var historys = [];
+    localStorage.historys = JSON.stringify(historys);
+}
+
+function getHistorys() {
+    return JSON.parse(localStorage.historys);
+}
+
+function addHistory(value) {
+    var historys = getHistorys();
+    if (historys.indexOf(value) < 0) {
+        historys.push(value);
+        localStorage.historys = JSON.stringify(historys);
+    }
+}
+
+function showHistory(input) {
+    historyList.innerHTML = '';
+    historyList.style.display = "block";
+    var historys = getHistorys().filter(function (item) {
+        if (input) {
+            return item.startsWith(input);
+        } else {
+            return true;
+        }
+    });
+    if (historys.length <= 0) {
+        hideHistory();
+    } else {
+        historys.forEach(function (item, index) {
+            historyList.innerHTML += `<li class="history-item">${item}</li>`;
+        });
+    }
+}
+
+function hideHistory() {
+    historyList.style.display = "none";
+    historyList.innerHTML = "";
+}
+
+// events
+input.onkeyup = function (event) {
+    if (event.which === 13) {
+        solve();
+        return;
+    }
     var text = this.value;
+    if (text.length <= 0) {
+        result.innerHTML = '';
+        polynomial.innerHTML = '';
+        hideHistory();
+        return;
+    }
+    showHistory(text);
     parseInput(text);
 }
 
-var solveBtn = document.querySelector("#solveBtn");
-solveBtn.onclick = function () {
-    var coefficients = getCoefficients(input.value);
-    var roots = findRoots(coefficients);
-    console.log(roots);
+input.onfocusin = function () {
+    showHistory();
 }
+
+input.onfocusout = function () {
+    hideHistory();
+}
+
+solveBtn.onclick = function () {
+    solve();
+}
+
+document.documentElement.onclick = function (event) {
+    var className = event.target.className;
+    if (className.indexOf("history-item") > -1) {
+        input.value = event.target.innerHTML;
+    }
+};

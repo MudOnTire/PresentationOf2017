@@ -2,6 +2,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    list-style: none;
 }
 
 html,
@@ -11,7 +12,7 @@ body {
 }
 
 .main {
-    height: 300px;
+    height: 400px;
     position: absolute;
     top: 0;
     bottom: 0;
@@ -26,7 +27,9 @@ body {
     border-radius: 4px;
     height: 54px;
     width: 50%;
+    min-width: 600px;
     border: 2px solid rgba(233, 20, 20, 0.9); 
+    position: relative;
 }
 
 #input {
@@ -66,6 +69,47 @@ input::placeholder {
 
 #polynomial {
     text-align: center;
+    font-size: 70px;
+    margin-top: 40px;
+    color: #333;
+}
+
+#result{
+    text-align: center;
     font-size: 30px;
     margin-top: 30px;
+    color: #333;
+}
+
+#result b{
+    display: inline-block;
+    background-color: aquamarine;
+    margin: 0 10px;
+    padding: 5px 12px;
+    border-radius: 8px;
+}
+
+#historyList{
+    position: absolute;
+    width: 84%;
+    top: 50px;
+    border: 2px solid rgba(233, 20, 20, 0.8);
+    box-sizing: content-box;
+    /* border-top: none; */
+    background-color: #fff;
+    left: -2px;
+    display: none;
+    max-height: 440px;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+.history-item{
+    height: 44px;
+    line-height: 44px;
+    border-bottom: 1px solid #ccc;
+    font-size: 26px;
+    color: #888;
+    text-align: left;
+    padding-left: 20px;
 }

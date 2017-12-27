@@ -1,0 +1,22 @@
+div{
+ margin: 0 auto;
+}
+
+body {
+    background-color: black;
+}
+
+body > *  {
+  width: 500px;
+}
+
+.main{
+  position: relative;
+  top: 85px;
+  left: 90px;
+}
+
+#svg{
+  background-color: darkseagreen;
+  background: radial-gradient(darkseagreen 0%, black 70%);
+}

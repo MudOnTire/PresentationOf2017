@@ -34,13 +34,21 @@ app.use(express.static(path.join(__dirname, 'src/css/shares')));
 app.get('/taobaoIndexImgs', (request, response) => {
     const crawler = new Crawler();
     crawler.getTaobaoIndexImgs(function (srcs) {
-        response.render('crawler', {
+        response.render('taobaoIndexImgs', {
             srcs: srcs
         });
     });
 });
 
-
+//render JD bike images view
+app.get('/jdBikesImgs', (request, response) => {
+    const crawler = new Crawler();
+    crawler.getJDBikeImgs(function (srcs) {
+        response.render('jdBikesImgs', {
+            srcs: srcs
+        });
+    });
+});
 
 app.listen(port, (err) => {
     if (err) {

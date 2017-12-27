@@ -1,15 +1,14 @@
 const Nightmare = require('nightmare');
 
-const nightmare = Nightmare({
-    show: true,
-    waitTimeout: 60000,
-});
-
 const userAgent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/62.0.3202.75 Safari/537.36";
 
 function Crawler() { }
 
 Crawler.prototype.getTaobaoIndexImgs = function (complete) {
+    const nightmare = Nightmare({
+        show: true,
+        waitTimeout: 60000,
+    });
     nightmare
         .useragent(userAgent)
         .goto("https://www.taobao.com/")
@@ -57,6 +56,10 @@ Crawler.prototype.getTaobaoIndexImgs = function (complete) {
 }
 
 Crawler.prototype.getJDBikeImgs = function (complete) {
+    const nightmare = Nightmare({
+        show: true,
+        waitTimeout: 60000,
+    });
     nightmare
         .goto('https://www.jd.com/')
         .viewport(1280, 800)

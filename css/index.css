@@ -1,0 +1,237 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: skyblue;
+}
+
+iframe {
+    width: 100%;
+    height: 100%;
+}
+
+.step {
+    width: 1376px;
+    height: 768px;
+    text-align: center;
+    opacity: 0.2;
+    -webkit-transition: opacity 1s;
+    -moz-transition: opacity 1s;
+    -ms-transition: opacity 1s;
+    -o-transition: opacity 1s;
+    transition: opacity 1s;
+    font-size: 60px;
+    position: relative;
+}
+
+.active.step {
+    opacity: 1;
+}
+
+.rotation {
+    display: block;
+    background-color: rgb(255, 255, 220);
+    border: 1px solid rgba(0, 0, 0, 0.3);
+    border-radius: 10px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    color: rgb(102, 102, 102);
+    text-shadow: 0 2px 2px rgba(0, 0, 0, 0.1);
+    font-family: 'Open Sans', Arial, Sans-serif;
+    font-size: 30px;
+    line-height: 36px;
+    letter-spacing: -1px;
+}
+
+.home-title {
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+    color: rgba(0, 0, 0, 0.9);
+    font-size: 80px;
+}
+
+.gameStep-title {
+    font-size: 80px;
+    font-weight: bold;
+    font-family: sans-serif;
+    position: absolute;
+    top: 200px;
+    text-align: left;
+    padding-left: 60px;
+    color: rgba(226, 53, 23, 0.8);
+}
+
+.gameStep-img {
+    height: 300px;
+    position: absolute;
+    right: 80px;
+    bottom: 100px;
+    border-radius: 100px;
+}
+
+.present .gameStep-img {
+    transition-delay: 0.2s;
+    transition: all 1s;
+    transform: rotateZ(1100deg);
+}
+
+.present .gameStep-title b {
+    display: inline-block;
+    transition-delay: 0.2s;
+    transition: all 1s;
+    transform: rotateZ(1080deg);
+    color: greenyellow;
+}
+
+.paintStep-title {
+    position: absolute;
+    width: 100%;
+    left: -1500px;
+    font-size: 80px;
+    top: 300px;
+    text-align: left;
+    color: brown;
+    opacity: 0;
+}
+
+.present .paintStep-title {
+    transition: all 1s ease-in-out 0s;
+    left: 50px;
+    opacity: 1;
+}
+
+@keyframes bounce {
+    0%,
+    20%,
+    40%,
+    60%,
+    80%,
+    100% {
+        transform: rotateZ(0);
+    }
+
+    10% {
+        transform: rotateZ(-15deg);
+    }
+
+    30% {
+        transform: rotateZ(14deg);
+    }
+
+    50% {
+        transform: rotateZ(-12deg);
+    }
+
+    70% {
+        transform: rotateZ(9deg);
+    }
+
+    90% {
+        transform: rotateZ(-5deg);
+    }
+}
+
+.paintStep-img {
+    width: 150px;
+    position: absolute;
+    top: -1000px;
+    right: 200px;
+    opacity: 0;
+}
+
+.present .paintStep-img {
+    transition: all 0.5s linear 0.8s;
+    top: 220px;
+    opacity: 1;
+    animation: 0.5s ease-in-out 1.3s bounce;
+}
+
+.paintStep-qm {
+    color: red;
+    position: absolute;
+    right: 20px;
+    top: 300px;
+    opacity: 0;
+}
+
+.present .paintStep-qm {
+    transition: all 1s linear 2s;
+    font-size: 300px;
+    opacity: 1;
+}
+
+.paintShow-iframe {
+    position: relative;
+    top: 160px;
+}
+
+.animation-title {
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 60px;
+    z-index: 20;
+    color: rgba(100, 100, 100, 0.8);
+}
+
+.active+.step {
+    opacity: 0;
+}
+
+@keyframes runner1 {
+    0% {
+        transform: translateX(0);
+    }
+    60%{
+        transform: translateX(500px);
+        animation-timing-function: linear;
+    }   
+    99%{
+        transform: translateX(2000px);
+        animation-timing-function: linear;
+    }
+    100%{
+        opacity: 0;
+        animation-timing-function: step-start;
+    }
+}
+
+@keyframes runner2 {
+    0% {
+        transform: translateX(0);
+    } 
+    90%{
+        transform: translateX(2000px);
+        animation-timing-function: ease-in;
+    }
+    100%{
+        opacity: 0;
+        animation-timing-function: step-start;
+    }
+}
+
+.heartStep-title {
+    color: deeppink;
+    font-size: 100px;
+    position: relative;
+    top: 45%;
+    font-weight: bold;
+    font-family: 'Microsoft Yahei';
+}
+
+.heartStep-title b {
+    padding-right: 20px;
+    display: inline-block;
+}
+
+.present .heartStep-title .runner1{
+    animation: 2s linear 2s runner1;
+    animation-fill-mode: forwards;
+}
+
+.present .heartStep-title .runner2{
+    animation: 2s linear 2.6s runner2;
+    animation-fill-mode: forwards;
+}

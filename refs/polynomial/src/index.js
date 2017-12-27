@@ -12,17 +12,17 @@ function getMaxOfArray(arr) {
 }
 
 function getCoefficients(text) {
-    var p = '-5x^4+3x^2-x-9';
-    var formattedP = p.replace(/([+-])/g, ' $1');
+    var formattedP = text.replace(/([+-])/g, ' $1');
     var parts = formattedP.split(' ').filter(function (item, index) {
         return item.length > 0;
     });
     var pairs = [];
     parts.forEach(function (part, index) {
-        var pattern1 = /^([+-]\d+)x\^(\d)+$/;
-        var pattern2 = /^([+-]\d+)x$/;
-        var pattern3 = /^([+-]\d+)$/;
-        let coefficient, power = null;
+        var pattern1 = /^([+-]?\d+)x\^(\d)+$/;
+        var pattern2 = /^([+-]?\d+)x$/;
+        var pattern3 = /^([+-]?\d+)$/;
+        let coefficient = null;
+        let power = null;
         if (pattern1.test(part)) {
             let match = part.match(pattern1);
             coefficient = match[1];
@@ -36,19 +36,22 @@ function getCoefficients(text) {
             power = 0;
         }
         if (coefficient !== null && power !== null) {
-            pairs.push({ c: coefficient, p: power });
+            pairs.push({ c: Number(coefficient), p: Number(power) });
         }
     });
-    var completePaires = [];
+    // console.log(pairs);
     var maxPower = getMaxOfArray(pairs.map((pair, index) => pair.p));
     var coefficients = [];
     for (let i = 0; i <= maxPower; i++) {
-        let pairWithPowerI = pairs.filter((pair, index) => pair.p === i);
-        if (pairWithPowerI) {
-            coefficients.push(pairWithPowerI.c);
-        }else{
-            coefficients.push(0);
-        }
+        (function (p) {
+            let pairWithPowerI = pairs.filter((pair, index) => pair.p === p);
+            // console.log(pairWithPowerI);
+            if (pairWithPowerI.length === 1) {
+                coefficients.push(pairWithPowerI[0].c);
+            } else {
+                coefficients.push(0);
+            }
+        })(i);
     }
     return coefficients;
 }
@@ -61,6 +64,7 @@ input.onkeyup = function () {
 
 var solveBtn = document.querySelector("#solveBtn");
 solveBtn.onclick = function () {
-    var roots = findRoots([-4, 0, 1]);
+    var coefficients = getCoefficients(input.value);
+    var roots = findRoots(coefficients);
     console.log(roots);
 }

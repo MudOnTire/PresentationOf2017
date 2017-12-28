@@ -61,7 +61,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "eb39a719c853a9a6bfd2"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "54711b6409526447577c"; // eslint-disable-line no-unused-vars
 /******/ 	var hotRequestTimeout = 10000;
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
@@ -735,7 +735,7 @@ exports = module.exports = __webpack_require__("./node_modules/css-loader/lib/cs
 
 
 // module
-exports.push([module.i, "* {\r\n    margin: 0;\r\n    padding: 0;\r\n    box-sizing: border-box;\r\n}\r\n\r\nhtml,\r\nbody {\r\n    height: 100%;\r\n    position: relative;\r\n}\r\n\r\n.main {\r\n    height: 300px;\r\n    position: absolute;\r\n    top: 0;\r\n    bottom: 0;\r\n    left: 0;\r\n    right: 0;\r\n    margin: auto;\r\n}\r\n\r\n.input-holder{\r\n    margin: auto;\r\n    text-align: center;\r\n    border-radius: 4px;\r\n    height: 54px;\r\n    width: 50%;\r\n    border: 2px solid rgba(233, 20, 20, 0.9); \r\n}\r\n\r\n#input {\r\n    display: block;\r\n    float: left;\r\n    font-size: 24px;\r\n    height: 100%;\r\n    border: none;\r\n    width: 83%;\r\n    padding-left: 20px;\r\n}\r\n\r\ninput::placeholder {\r\n    color: #ccc\r\n}\r\n\r\n#input:focus {\r\n    outline: none;\r\n}\r\n\r\n#solveBtn {\r\n    height: 50px;\r\n    background-color: rgba(233, 20, 20, 0.9);\r\n    display: block;\r\n    float: right;\r\n    color: white;\r\n    text-decoration: none;\r\n    line-height: 50px;\r\n    width: 16%;\r\n    font-size: 22px;\r\n}\r\n\r\n#solveBtn:hover{\r\n    background-color: rgba(233, 20, 20, 0.7);\r\n    transition: background-color 0.3s ease-in-out;\r\n}\r\n\r\n#polynomial {\r\n    text-align: center;\r\n    font-size: 30px;\r\n    margin-top: 30px;\r\n}", ""]);
+exports.push([module.i, "* {\r\n    margin: 0;\r\n    padding: 0;\r\n    box-sizing: border-box;\r\n    list-style: none;\r\n}\r\n\r\nhtml,\r\nbody {\r\n    height: 100%;\r\n    position: relative;\r\n    background-color: #fff;\r\n}\r\n\r\n.main {\r\n    height: 400px;\r\n    position: absolute;\r\n    top: 0;\r\n    bottom: 0;\r\n    left: 0;\r\n    right: 0;\r\n    margin: auto;\r\n}\r\n\r\n.input-holder{\r\n    margin: auto;\r\n    text-align: center;\r\n    border-radius: 4px;\r\n    height: 54px;\r\n    width: 50%;\r\n    min-width: 600px;\r\n    border: 2px solid rgba(233, 20, 20, 0.9); \r\n    position: relative;\r\n}\r\n\r\n#input {\r\n    display: block;\r\n    float: left;\r\n    font-size: 24px;\r\n    height: 100%;\r\n    border: none;\r\n    width: 83%;\r\n    padding-left: 20px;\r\n}\r\n\r\ninput::placeholder {\r\n    color: #ccc\r\n}\r\n\r\n#input:focus {\r\n    outline: none;\r\n}\r\n\r\n#solveBtn {\r\n    height: 50px;\r\n    background-color: rgba(233, 20, 20, 0.9);\r\n    display: block;\r\n    float: right;\r\n    color: white;\r\n    text-decoration: none;\r\n    line-height: 50px;\r\n    width: 16%;\r\n    font-size: 22px;\r\n}\r\n\r\n#solveBtn:hover{\r\n    background-color: rgba(233, 20, 20, 0.7);\r\n    transition: background-color 0.3s ease-in-out;\r\n}\r\n\r\n#polynomial {\r\n    text-align: center;\r\n    font-size: 70px;\r\n    margin-top: 40px;\r\n    color: #333;\r\n}\r\n\r\n#result{\r\n    text-align: center;\r\n    font-size: 30px;\r\n    margin-top: 30px;\r\n    color: #333;\r\n}\r\n\r\n#result b{\r\n    display: inline-block;\r\n    background-color: aquamarine;\r\n    margin: 0 10px;\r\n    padding: 5px 12px;\r\n    border-radius: 8px;\r\n}\r\n\r\n#historyList{\r\n    position: absolute;\r\n    width: 84%;\r\n    top: 50px;\r\n    border: 2px solid rgba(233, 20, 20, 0.8);\r\n    box-sizing: content-box;\r\n    /* border-top: none; */\r\n    background-color: #fff;\r\n    left: -2px;\r\n    display: none;\r\n    max-height: 440px;\r\n    overflow-y: auto;\r\n    overflow-x: hidden;\r\n}\r\n\r\n.history-item{\r\n    height: 44px;\r\n    line-height: 44px;\r\n    border-bottom: 1px solid #ccc;\r\n    font-size: 26px;\r\n    color: #888;\r\n    text-align: left;\r\n    padding-left: 20px;\r\n}\r\n\r\n.history-item:hover{\r\n    cursor: pointer;\r\n}", ""]);
 
 // exports
 
@@ -1560,24 +1560,170 @@ if(true) {
 var styles = __webpack_require__("./src/index.css");
 var findRoots = __webpack_require__("./node_modules/durand-kerner/roots.js");
 
-function parseInput(text) {
-    var poly = text.replace(/\^(\d)+/g, '<sup>$1</sup>');
-    var p = document.querySelector('#polynomial');
-    p.innerHTML = poly;
-}
-
 var input = document.querySelector("#input");
-input.onkeyup = function () {
-    var text = this.value;
-    parseInput(text);
+var polynomial = document.querySelector('#polynomial');
+var solveBtn = document.querySelector("#solveBtn");
+var result = document.querySelector('#result');
+var historyList = document.querySelector('#historyList');
+
+//初始化历史存储
+initHistory();
+
+function parseInput() {
+    var poly = input.value.replace(/\^(\d)+/g, '<sup>$1</sup>');
+    polynomial.innerHTML = poly + ' = 0';
 }
 
-var solveBtn = document.querySelector("#solveBtn");
-solveBtn.onclick=function(){
-    var p = new Polynomial(input.value);
-    var solve = p.eval();
-    console.log(solve);
+function getMaxOfArray(arr) {
+    return Math.max.apply(null, arr);
 }
+
+function getCoefficients(text) {
+    var formattedP = text.replace(/([+-])/g, ' $1');
+    var parts = formattedP.split(' ').filter(function (item, index) {
+        return item.length > 0;
+    });
+    var pairs = [];
+    parts.forEach(function (part, index) {
+        var pattern1 = /^([+-]?\d*)x\^(\d)+$/;
+        var pattern2 = /^([+-]?\d*)x$/;
+        var pattern3 = /^([+-]?\d+)$/;
+        let coefficient = null;
+        let power = null;
+        if (pattern1.test(part)) {
+            let match = part.match(pattern1);
+            coefficient = match[1] === "" ? "1" : match[1];
+            power = match[2];
+        } else if (pattern2.test(part)) {
+            let match = part.match(pattern2);
+            coefficient = match[1] === "" ? "1" : match[1];
+            power = 1;
+        } else if (pattern3.test(part)) {
+            coefficient = part;
+            power = 0;
+        }
+        if (coefficient !== null && power !== null) {
+            pairs.push({ c: Number(coefficient), p: Number(power) });
+        }
+    });
+    // console.log(pairs);
+    var maxPower = getMaxOfArray(pairs.map((pair, index) => pair.p));
+    console.log('max power: ' + maxPower);
+    var coefficients = [];
+    for (let i = 0; i <= maxPower; i++) {
+        (function (p) {
+            let pairWithPowerI = pairs.filter((pair, index) => pair.p === p);
+            // console.log(pairWithPowerI);
+            if (pairWithPowerI.length === 1) {
+                coefficients.push(pairWithPowerI[0].c);
+            } else {
+                coefficients.push(0);
+            }
+        })(i);
+    }
+    console.log(coefficients);
+    return coefficients;
+}
+
+function solve() {
+    var coefficients = getCoefficients(input.value);
+    var roots = findRoots(coefficients);
+    var rootsStr = '的解为：';
+    if (roots[0].length <= 0) return;
+    for (let i = 0; i < roots[0].length; i++) {
+        var imgRoot = roots[1][i];
+        if (imgRoot.toFixed(3) == 0) {
+            rootsStr += '<b>' + roots[0][i].toFixed(3) + '</b>';
+        } else {
+            rootsStr += '<b>' + roots[0][i].toFixed(3) + '+' + roots[1][i].toFixed(3) + 'i' + '</b>';
+        }
+    }
+    result.innerHTML = rootsStr;
+    addHistory(input.value);
+    console.log(roots);
+}
+
+// history
+function initHistory() {
+    var historys = [];
+    localStorage.historys = JSON.stringify(historys);
+}
+
+function getHistorys() {
+    return JSON.parse(localStorage.historys);
+}
+
+function addHistory(value) {
+    var historys = getHistorys();
+    if (historys.indexOf(value) < 0) {
+        historys.push(value);
+        localStorage.historys = JSON.stringify(historys);
+    }
+}
+
+function showHistory(input) {
+    historyList.innerHTML = '';
+    historyList.style.display = "block";
+    var historys = getHistorys().filter(function (item) {
+        if (input) {
+            return item.startsWith(input);
+        } else {
+            return true;
+        }
+    });
+    if (historys.length <= 0) {
+        hideHistory();
+    } else {
+        historys.forEach(function (item, index) {
+            historyList.innerHTML += `<li class="history-item">${item}</li>`;
+        });
+    }
+}
+
+function hideHistory() {
+    historyList.style.display = "none";
+    historyList.innerHTML = "";
+}
+
+// events
+input.onkeyup = function (event) {
+    if (event.which === 13) {
+        solve();
+        hideHistory();
+        return;
+    }
+    var text = this.value;
+    if (text.length <= 0) {
+        result.innerHTML = '';
+        polynomial.innerHTML = '';
+        hideHistory();
+        return;
+    }
+    showHistory(text);
+    parseInput();
+}
+
+input.onfocus = function () {
+    showHistory();
+}
+
+input.onblur = function () {
+    setTimeout(function () {
+        hideHistory();
+    }, 200);
+}
+
+solveBtn.onclick = function () {
+    solve();
+}
+
+document.documentElement.onclick = function (event) {
+    var className = event.target.className;
+    if (className.indexOf("history-item") > -1) {
+        input.value = event.target.innerHTML;
+        parseInput();
+    }
+};
 
 /***/ })
 

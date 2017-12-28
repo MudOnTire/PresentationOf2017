@@ -235,3 +235,12 @@ iframe {
     animation: 2s linear 2.6s runner2;
     animation-fill-mode: forwards;
 }
+
+.crawler-title{
+    font-size: 100px;
+    font-weight: bold;
+    color: rgb(255, 165, 0);
+    margin-top: 250px;
+    text-shadow: 5px 5px 4px rgba(222, 120, 0, 0.6);
+    line-height: 120px;
+}

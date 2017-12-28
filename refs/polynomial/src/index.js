@@ -151,7 +151,7 @@ input.onfocus = function () {
 input.onblur = function () {
     setTimeout(function () {
         hideHistory();
-    }, 100);
+    }, 200);
 }
 
 solveBtn.onclick = function () {
